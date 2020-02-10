@@ -1,21 +1,22 @@
 Feature: my first feature
 
   Scenario Outline: my scenario
-    Given a rest api request with parameters: "<request_params>"
+    Given Set request parameter "inc" as "<request_params>"
     When i make request to randomuser.me
-    Then i receive response with user data
+    Then i receive response with user data with value "<expected_str>"
     Examples:
-      | request_params       |
-      | gender,location,name |
-      | gender, name         |
-      | name                 |
-      | gender               |
+      | request_params       |expected_str  |
+      | gender,location,name |gender        |
+      | gender, name         |name          |
+      | name                 |name          |
+      | gender               |gender        |
 
 #     * - make this work
 #    ** - use soft assert to check first and second name
 #   *** - find some nice way to store data
   Scenario: test seed generator
-    Given a rest api request with seed "asdasdasdasdasd"
-    When i make request with specified seed
-    Then i recieve response name "some_name"
-    And i recieve response name "some_second_name"
+    Given Set request parameter "seed" as "asdasdasdasdasd"
+    When i make request to randomuser.me
+    Then i receive response with user data with value "Necati"
+    And i receive response with user data with value "Abadan"
+    And i receive response with user data with value "Filistin Cd"
