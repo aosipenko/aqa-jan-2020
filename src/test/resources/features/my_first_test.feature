@@ -11,7 +11,6 @@ Feature: my first feature
       | name                 |name          |
       | gender               |gender        |
 
-#     * - make this work
 #    ** - use soft assert to check first and second name
 #   *** - find some nice way to store data
   Scenario: test seed generator

@@ -24,7 +24,6 @@ public class CucumberSteps {
     @When("i make request to randomuser.me")
     public void makeRestRequest() {
         response = RestAssured.given().queryParams(parameters).get(URL).then();
-
     }
 
     @Then("i receive response with user data with value {string}")
