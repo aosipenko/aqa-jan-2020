@@ -1,11 +1,14 @@
 package aqa.steps;
 
-import aqa.driver.WDContainer;
 import aqa.pages.GooglePage;
+import aqa.pages.locators.GoogleLocators;
+import aqa.util.DataHolder;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.Date;
+import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
 
@@ -20,12 +23,27 @@ public class GoogleSteps {
 
     @When("i search for {string} with {string}")
     public void searchInGoogle(String value, String searchButton) {
-        googlePage.fillSearchForm(value);
         googlePage.pressSearchButton(searchButton);
     }
 
     @Then("is see {string} in search results")
     public void validateSearch(String value) {
         assertTrue(googlePage.validateSearchResults(value));
+    }
+
+    @When("I set text of {} to {string}")
+    public void setElementText(GoogleLocators locators, String value) {
+        googlePage.fillTextElement(locators, value);
+    }
+
+    @Given("Generate random number {string}")
+    public void generateNumber(String alias) {
+        Random random = new Random();
+        DataHolder.put(alias, random.nextInt(1000));
+    }
+
+    @Given("Add number {int} as {string}")
+    public void addNumber(int num, String alias) {
+        DataHolder.put(alias, num);
     }
 }
