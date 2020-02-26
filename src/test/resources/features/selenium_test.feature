@@ -1,3 +1,4 @@
+@fb
 Feature: selenium test
 
   Scenario: load google

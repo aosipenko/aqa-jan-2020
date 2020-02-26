@@ -5,11 +5,13 @@ import aqa.util.DataHolder;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 public class FBSteps {
 
-    private String s;
-    private FacebookPage facebookPage = new FacebookPage();
+    @Autowired
+    private FacebookPage facebookPage;
 
     @Given("Load FB page")
     public void loadFB() {

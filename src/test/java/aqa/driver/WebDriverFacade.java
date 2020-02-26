@@ -6,15 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WebDriverFacade {
 
     private WebDriver driver;
 
-    public WebDriverFacade() {
-        this.driver = WDContainer.getContainer().driver;
+    public WebDriverFacade(String driverType) {
+        this.driver = WDFactory.getDriver(DriverType.valueOf(driverType));
     }
-
 
     public void loadPage(String url) {
         driver.get(url);
@@ -37,5 +38,9 @@ public class WebDriverFacade {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+
+    public void quitDriver() {
+        driver.quit();
     }
 }

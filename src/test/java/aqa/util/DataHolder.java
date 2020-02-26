@@ -1,7 +1,10 @@
 package aqa.util;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 
+@Component
 public class DataHolder {
     private final static HashMap<String, Object> data = new HashMap<>();
 

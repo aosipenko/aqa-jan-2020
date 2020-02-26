@@ -6,15 +6,17 @@ import aqa.util.DataHolder;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.Date;
 import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
 
 public class GoogleSteps {
 
-    private GooglePage googlePage = new GooglePage();
+    @Autowired
+    private GooglePage googlePage;
 
     @Given("Load page google.com")
     public void loadGoogle() {

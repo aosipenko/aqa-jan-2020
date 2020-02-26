@@ -1,19 +1,18 @@
 package aqa.pages;
 
-import aqa.driver.WDContainer;
 import aqa.driver.WebDriverFacade;
-import org.openqa.selenium.WebDriver;
 
 public abstract class AbstractPage {
     private final String pageUrl;
 
-    protected WebDriverFacade webDriver = new WebDriverFacade();
+    public WebDriverFacade webDriverFacade;
 
-    public AbstractPage(String pageUrl) {
+    public AbstractPage(String pageUrl, WebDriverFacade webDriverFacade) {
         this.pageUrl = pageUrl;
+        this.webDriverFacade = webDriverFacade;
     }
 
     public void loadPage() {
-        webDriver.loadPage(pageUrl);
+        webDriverFacade.loadPage(pageUrl);
     }
 }
